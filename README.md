@@ -87,4 +87,4 @@ Creating ambient reminders for upcoming appointments.
 
 <br/>
 <br/>
-**Whan to know more about this research project?** see: [Summery of tasks](https://github.com/alt-code/TaskLights/blob/master/Report.md)
+**Whan to know more about this research project?** see: [Summery of tasks](https://github.com/alt-code/TaskLights/blob/master/Summary.md)
