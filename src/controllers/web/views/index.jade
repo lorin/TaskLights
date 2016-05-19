@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1(class="headline") #{title}
+  h2 Welcome to #{title}
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+     
+  <br/>
+  <br/>
+  <br/>
+  
+  form(name= "Blink1", method= "post" class="container-fluid")
+    div.col-xs-6
+      input(type= "submit", value= "Red" class="btn btn-danger col-md-12" formaction="/Blink/onRed")
+      input(type= "submit", value= "Green" class="btn btn-success col-md-12" formaction="/Blink/onGreen")
+      input(type= "submit", value= "Blue" class="btn btn-primary col-md-12" formaction="/Blink/onBlue")
+      input(type= "submit", value= "Off" class="btn col-md-12" formaction="/Blink/off")
+          
+    div.col-xs-6
+      input(type= "submit", value= "Pulse Alarm" class="btn btn-warning col-md-12" formaction="/Blink/pulse")
+      input(type= "submit", value= "Solid Alarm" class="btn btn-warning col-md-12" formaction="/Blink/solid" onclick="myFunction()")
+      input(type="text", name="sessionLength" class="col-md-12" placeholder="Session Length")
