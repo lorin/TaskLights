@@ -9,7 +9,6 @@
 
 **Summary of the tasks:** <br/>
 
-* Weekly meetings with [Dr. Chris Parnin] (http://www.chrisparnin.me/) to discuss and dicide how I need to proceed toward our goal of a complete end-to-end system working.
 * Added different patterns for alarms (PoliceCar, Pulse + slow/fast) [[#5](https://github.com/alt-code/Blink/issues/5)]
 * Added lightness (HSL color-space) to the patterns with the help of [onecolor] (https://www.npmjs.com/package/onecolor) library. + helper functions for color-space conversions. [[#9](https://github.com/alt-code/Blink/issues/9)]
 * Added multi led support to pulse function. [[#11](https://github.com/alt-code/Blink/issues/11)]
@@ -37,8 +36,6 @@
 
 **Plans for the future:** <br/>
      We will add more features, develop a [stand-alone blink1 npm module](https://github.com/alt-code/Blink/issues/37) and more. Please create a new issue for any idea that you this is useful to have.
-
-At the end I want to thank [Dr. Chris Parnin](http://www.chrisparnin.me/) for guiding me through this research project.
 
 <br/>
 [Samim Mirhosseini](ssmirr.github.io), [Dr. Chris Parnin](http://www.chrisparnin.me/)<br/>
