@@ -89,4 +89,4 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 <br/>
 <br/>
-**Whan to know more about this research project?** see: [Summery of tasks](https://github.com/alt-code/TaskLights/blob/master/Summary.md)
+**Want to know more about this research project?** see: [Summary of tasks](https://github.com/alt-code/TaskLights/blob/master/Summary.md)
