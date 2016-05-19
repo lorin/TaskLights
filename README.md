@@ -2,7 +2,7 @@
 
 Like music, light (color) is an excellent source of information that the brain can process in the background. A more structured signal, like a clock or count down timer (24:13 minutes) requires our eyes to first shift focus to the location of the information, and then perform a further mental calculation to reason about the time you’ve spent on a task. All that extra thinking can be disruptive of our work.
 
-Simply having the light on is a strong and constant environmental cue that you have a task that you need to complete. The color helps you be aware of your state: (getting started, need to really work, ok — wrap it up time is almost done).
+Simply having the light on is a strong and constant environmental cue that you have a task that you need to complete. The color helps you be aware of your state: (getting started, need to really work, ok — wrap it up time is almost done). Fun trick, try reading this text and see the light in the picture below. Now, what about that 24:13 timer?
 
 ![demo](https://media.giphy.com/media/vQsEfQegkAl8s/giphy.gif)
 
