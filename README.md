@@ -86,10 +86,14 @@ Simply having the light on is a strong and constant environmental cue that you h
      * `--pomodoro` or `-p`
      * Ticking sound: `--tick` or `-t`
 
-     For example to do a pomodoro with ticking sound:
-     ``` bash
-     $ node blink.js -p -t
-     ```
+ For example to do a pomodoro with ticking sound:
+ ``` bash
+ $ node blink.js -p -t
+  ```
+ Or to do solid style indicator for 45 minuets: 
+ ``` bash
+ $ node blink.js --solid --length 45
+ ```
 
 
 <br/>
