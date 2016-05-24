@@ -86,6 +86,11 @@ Simply having the light on is a strong and constant environmental cue that you h
      * `--pomodoro` or `-p`
      * Ticking sound: `--tick` or `-t`
 
+     For example to do a pomodoro with ticking sound:
+     ``` bash
+     $ node blink.js -p -t
+     ```
+
 
 <br/>
 <br/>
