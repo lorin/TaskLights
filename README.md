@@ -73,7 +73,7 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 <br/>
 
-####Command line arguments:
+#### Command line arguments:
 1. Type:
      * `--solid`  or `-s`
      * `--linear` or `-l`
@@ -90,11 +90,19 @@ Simply having the light on is a strong and constant environmental cue that you h
  ``` bash
  $ node blink.js -p -t
   ```
- Or to do solid style indicator for 45 minuets: 
+ Or to do solid style indicator for 45 minuets:
  ``` bash
  $ node blink.js --solid --length 45
  ```
 
+#### Common errors and solutions:
+1. ** USB permission (on linux) ** : </br>
+      If you get `cannot open device with path 0001:0004:00` error, you can either use your administrator rights (`sudo`) or by setting a udev rule (copy [51-blink1.rules](https://github.com/todbot/blink1/blob/master/linux/51-blink1.rules) to `/etc/udev/rules.d/`)
+      * If you get error when trying to do `sudo node ...` run this command:
+       ```
+       n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
+       ```
+       Click [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-with-nvm-node-version-manager-on-a-vps#-installing-nodejs-on-a-vps) for details of how this works.
 
 <br/>
 <br/>
