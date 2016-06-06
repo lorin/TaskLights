@@ -21,6 +21,11 @@ Simply having the light on is a strong and constant environmental cue that you h
   sudo apt-get install libudev-dev libusb-1.0-0-dev libfox-1.6-dev
   ```
 
+  If using Debian/Ubuntu:
+  ```
+  sudo apt-get install libasound2-dev
+  ```
+
 2. #### Installing Node.js:
   * See [tutorial here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server) for other ways:
   ``` bash
@@ -95,7 +100,7 @@ Simply having the light on is a strong and constant environmental cue that you h
  $ node blink.js --solid --length 45
  ```
 
-#### Common errors and solutions:
+#### Common errors:
 1. **USB permission (on linux)** : </br>
       If you get `cannot open device with path 0001:0004:00` error, you can either use your administrator rights (`sudo`) or set a udev rule (copy [51-blink1.rules](https://github.com/todbot/blink1/blob/master/linux/51-blink1.rules) to `/etc/udev/rules.d/`)
       * If you get error when trying to do `sudo node ...` run this command:
