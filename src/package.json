@@ -11,7 +11,7 @@
   ],
   "author": "alt-code",
   "license": "ISC",
-  "Dependencies": {
+  "dependencies": {
     "googleapis": "^2.1.3",
     "ical": "^0.4.0",
     "moment": "^2.10.6",
