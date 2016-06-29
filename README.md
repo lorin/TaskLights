@@ -78,7 +78,8 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 <br/>
 
-#### Command line arguments:
+## Command line arguments
+##### Run "node blink.js --help" for help page:
 1. Type:
      * `--solid`  or `-s`
      * `--linear` or `-l`
