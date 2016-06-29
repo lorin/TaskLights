@@ -128,12 +128,17 @@ const cli = commandLineArgs([{
 }, {
     name: 'lightness',
     type: Number
+},{
+    name: 'help',
+    type: Boolean
 }]);
 const options = cli.parse();
 
 var lightness;
 options.lightness != undefined ? lightness = options.lightness : lightness = 1;
-if(options.solid)
+if(options.help)
+    manPage();
+else if(options.solid)
     linear(options.length, solidAlarm, 1, lightness);
 else if(options.linear)
     linear(options.length, pulseAlarm, 60, lightness);
@@ -389,6 +394,41 @@ function generalGetColor(start, now, sessionLength) {
     } else {
         return palette.red;
     }
+}
+
+/**
+ * Prints the man page to stdout
+ */
+function manPage() {
+    const getUsage = require('command-line-usage')
+
+    const sections = [{
+        header: 'TaskLights Options',
+        optionList: [{
+            name: 'solid -s',
+            description: 'Solid light alarm (have to specify --length)'
+        }, {
+            name: 'linear -l',
+            description: 'Linear pulse alarm (have to specify --length)'
+        }, {
+            name: 'exponential -e',
+            description: 'Exponential pulse alarm (have to specify --length)'
+        },{
+            name: 'pomodoro -p',
+            description: 'Pomodoro alram (Don\'t need to specify --length)'
+        },{
+            name: 'length',
+            description: 'The length of alarm'
+        },{
+            name: 'lightness (optional)',
+            description: 'Lightness of the led. So e.g. if in a dark room can use 0.7 value'
+        }]
+    }, {
+        content: 'Project home: [underline]{https://github.com/alt-code/TaskLights}'
+    }]
+    const usage = getUsage(sections)
+    console.log(usage)
+    process.exit(0);
 }
 
 
