@@ -422,6 +422,9 @@ function manPage() {
         },{
             name: 'lightness (optional)',
             description: 'Lightness of the led. So e.g. if in a dark room can use 0.7 value'
+        },{
+            name: 'tick -t (optional)',
+            description: 'Ticking sound when doing pomodoro'
         }]
     }, {
         content: 'Project home: [underline]{https://github.com/alt-code/TaskLights}'
