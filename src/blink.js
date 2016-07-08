@@ -147,8 +147,16 @@ else if(options.exponential)
 else if(options.pomodoro)
     pomodoro(lightness)
 
+// If settings.json files update empty options
+if( fs.existsSync("settings.json") )
+{
+    var obj = JSON.parse(fs.readFileSync("settings.json"), 'utf8');
+    console.log( obj )
+    if( options.remote == undefined )
+        options.remote = obj.remote
+}
 
-//******************************** PATTERS **********************************↓
+//******************************** PATTERNS **********************************↓
 /**
  * Simulating police car lights
  * @param  {number} sessionLength [seconds]
