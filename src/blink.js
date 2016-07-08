@@ -5,6 +5,7 @@ var schedule = require('node-schedule');
 var later = require("later");
 var commandLineArgs = require('command-line-args');
 var fs = require('fs');
+var path = require('path');
 var lame = require('lame');
 var Speaker = require('speaker');
 
@@ -131,6 +132,14 @@ const cli = commandLineArgs([{
 },{
     name: 'help',
     type: Boolean
+},{
+    name: 'message',
+    alias: 'm',
+    type: String
+},{
+    name: 'remote',
+    alias: 'r',
+    type: String
 }]);
 const options = cli.parse();
 
@@ -154,6 +163,64 @@ if( fs.existsSync("settings.json") )
     console.log( obj )
     if( options.remote == undefined )
         options.remote = obj.remote
+}
+
+var directory = path.join(__dirname,"/logs");
+var gitDirectory = path.join(directory, ".git");
+var dataFile = path.join(directory, "pomodoro.json");
+
+// Save message to repo.
+if( options.remote )
+{
+    // starting a new repo
+    if( !fs.existsSync( gitDirectory ) )
+    {
+        require('simple-git')()
+            .clone(options.remote,directory, function (err) 
+            {
+                // done.
+              commitLogMessage();
+           });
+    }
+    else
+    {
+        // update repo and when there are changes, pull changes
+        require('simple-git')(directory)
+           .pull(function(err, update) 
+           {
+              if(update && update.summary.changes) 
+              {
+                console.log( "pulled latest")
+              }
+              commitLogMessage();
+           });
+    }
+}
+
+function commitLogMessage() 
+{
+    if( options.message == undefined )
+        options.message = "no goal specified";
+
+    if( !fs.existsSync(dataFile) )
+    {
+        var obj = {}
+        fs.writeFileSync(dataFile, JSON.stringify(obj, null, 2));
+    }
+    console.log( "Writing log mesage")
+    var obj = JSON.parse(fs.readFileSync(dataFile), 'utf8');
+    var seconds = Math.floor((new Date).getTime()/1000);
+    delete options["remote"];
+    obj[seconds] = options;
+
+
+    fs.writeFile(dataFile, JSON.stringify(obj, null, 2), function(err) 
+    {
+        require('simple-git')(directory)
+            .add('.')
+            .commit(options.message)
+            .push('origin', 'master');
+    });
 }
 
 //******************************** PATTERNS **********************************↓
