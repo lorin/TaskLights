@@ -76,8 +76,13 @@ Simply having the light on is a strong and constant environmental cue that you h
   and to start the local-server do the following and go to `http://localhost:5000/` in your browser:
   ```node app.js```
 
-5. #### To track your Focus: 
-   Create a git repository and update `src/settings.json` with your information.
+5. #### To track your focus: 
+   Create a git repository and update `src/settings.json` with your information.<br>
+   Then you will be able to see a heatmap of your TaskLights sessions at: 
+      * {Your GitHub username}.github.io/{Name of the repo you made}
+      * Example: [ssmirr.github.io/FocusDash](https://ssmirr.github.io/FocusDash/)
+
+   Or a json of your sessions in master branch of the repository that you created.
 
 <br/>
 
@@ -104,7 +109,7 @@ Simply having the light on is a strong and constant environmental cue that you h
  $ node blink.js --solid --length 45
  ```
 
-#### Common errors:
+### Common errors:
 1. **USB permission (on linux)** : </br>
       If you get `cannot open device with path 0001:0004:00` error, you can either use your administrator rights (`sudo`) or set a udev rule (copy [51-blink1.rules](https://github.com/todbot/blink1/blob/master/linux/51-blink1.rules) to `/etc/udev/rules.d/`)
       * If you get error when trying to do `sudo node ...` run this command:
