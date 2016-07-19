@@ -76,6 +76,9 @@ Simply having the light on is a strong and constant environmental cue that you h
   and to start the local-server do the following and go to `http://localhost:5000/` in your browser:
   ```node app.js```
 
+5. #### To track your Focus: 
+   Create a git repository and update `src/settings.json` with your information.
+
 <br/>
 
 ## Command line arguments
