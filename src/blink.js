@@ -8,6 +8,8 @@ var fs = require('fs');
 var path = require('path');
 var lame = require('lame');
 var Speaker = require('speaker');
+var childProcess = require('child_process');
+
 
 /**
  * onecolor usage example:
@@ -168,6 +170,7 @@ if( fs.existsSync("settings.json") )
 var directory = path.join(__dirname,"/logs");
 var gitDirectory = path.join(directory, ".git");
 var dataFile = path.join(directory, "pomodoro.json");
+var gh_pages = path.join(directory, "www")
 
 // Save message to repo.
 if( options.remote )
@@ -194,6 +197,9 @@ if( options.remote )
               }
               commitLogMessage();
            });
+
+        if( !fs.existsSync( gh_pages ) )
+            childProcess.execSync('cp -r heatmap_template/* logs && cd logs && mv gitignore .gitignore && npm install && grunt mustache_render && grunt gh-pages && git pull');
     }
 }
 
@@ -221,6 +227,9 @@ function commitLogMessage()
             .commit(options.message)
             .push('origin', 'master');
     });
+
+    // childProcess.execSync('cp -r heatmap_template/{,.??}* logs && cd logs && npm install && grunt mustache_render && grunt gh-pages && git pull');
+
 }
 
 //******************************** PATTERNS **********************************↓
