@@ -133,6 +133,7 @@ const cli = commandLineArgs([{
     type: Number
 },{
     name: 'help',
+    alias: 'h'
     type: Boolean
 },{
     name: 'message',
