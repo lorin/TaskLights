@@ -1,8 +1,0 @@
-// A template for settings.json. Update it to match your own repository 
-// Note: you don't have to use the ssh url of the repository
-// Note: the repository can be private or public
-{ 
-	"remote": "git@github.com:ssmirr/FocusDash.git",
-	"username": "ssmirr",
-	"repo_name": "FocusDash" 
-}
