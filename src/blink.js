@@ -509,6 +509,9 @@ function manPage() {
         },{
             name: 'tick -t (optional)',
             description: 'Ticking sound when doing pomodoro'
+        },{
+            name: 'message -m (optional)',
+            description: 'The message that will be recorded for FocusDash (If set up in settings.json)'
         }]
     }, {
         content: 'Project home: [underline]{https://github.com/alt-code/TaskLights}'
