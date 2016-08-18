@@ -22,6 +22,7 @@
     "later": "^1.2.0",
     "moment": "^2.10.6",
     "onecolor": "^2.5.0",
+    "progress": "^1.1.8",
     "simple-git": "^1.41.0"
   },
   "devDependencies": {

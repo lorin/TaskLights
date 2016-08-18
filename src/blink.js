@@ -62,7 +62,7 @@ function exitHandler(options, err) {
 
 var solidAlarm = {
     onInterval: function (start, sessionLength, lightness) {
-        console.log(new Date());
+        // console.log(new Date());
         var myColor = hexToR_G_B(Lightnen(generalGetColor(start, moment(), sessionLength * 60), lightness));
         var r = myColor[0];
         var g = myColor[1];
@@ -77,7 +77,7 @@ var solidAlarm = {
 
 var pulseAlarm = {
     onInterval: function (start, sessionLength, lightness) {
-        console.log(new Date());
+        // console.log(new Date());
         Flashes(1, 1000, generalGetColor(start, moment(), sessionLength * 60), lightness);
     },
     onEnd: function () {
@@ -103,6 +103,23 @@ process.on('SIGINT', exitHandler.bind(null, {
 process.on('uncaughtException', exitHandler.bind(null, {
     exit: true
 }));
+
+
+/**
+ * Will make a progress bar in stdout given the length in minutes
+ * @param  {Number} length length of the progress bar in minutes
+ */
+var pbar = function(length){
+    var ProgressBar = require('progress');
+    var bar = new ProgressBar('TaskLights session [:bar] :percent', { incomplete: ' ', total: 60 });
+    var timer = setInterval(function(){
+    bar.tick();
+      if (bar.complete) {
+        console.log('\ncomplete\n');
+        clearInterval(timer);
+      }
+    }, length * 1000);
+}
 
 
 const cli = commandLineArgs([{
@@ -146,6 +163,12 @@ const cli = commandLineArgs([{
 }]);
 const options = cli.parse();
 
+if(options.pomodoro){
+    pbar(25);
+} else if (options.length) {
+    pbar(options.length);
+}
+
 var lightness;
 options.lightness != undefined ? lightness = options.lightness : lightness = 1;
 if(options.help)
@@ -158,6 +181,7 @@ else if(options.exponential)
     exponential(options.length);
 else if(options.pomodoro)
     pomodoro(lightness)
+
 
 // If settings.json files update empty options
 if( fs.existsSync("settings.json") )
@@ -480,6 +504,7 @@ function generalGetColor(start, now, sessionLength) {
         return palette.red;
     }
 }
+
 
 /**
  * Prints the man page to stdout
