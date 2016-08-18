@@ -78,6 +78,15 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 5. #### To track your focus: 
    Create a git repository and update `src/settings.json` with your information.<br>
+   Content of `settings.json` should look like:
+   ```
+   { 
+     	"remote": {{Remote url of the repository you just created}},
+     	"username": {{Your GitHub username}},
+     	"repo_name": {{Name of the repository you just created}} 
+   }
+   ```
+   
    Then you will be able to see a heatmap of your TaskLights sessions at: 
       * {Your GitHub username}.github.io/{Name of the repo you made}
       * Example: [ssmirr.github.io/FocusDash](https://ssmirr.github.io/FocusDash/)
