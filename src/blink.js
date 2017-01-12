@@ -223,8 +223,12 @@ if( options.remote )
               commitLogMessage();
            });
 
-        if( !fs.existsSync( gh_pages ) )
-            childProcess.execSync('cp -r heatmap_template/* logs && cd logs && mv gitignore .gitignore && npm install && grunt mustache_render && grunt gh-pages && git pull');
+        if( !fs.existsSync( gh_pages ) ){
+            if(process.platform === 'win32')
+                childProcess.execSync('copy /Y heatmap_template\* logs && cd logs && move /Y gitignore .gitignore && npm install && grunt mustache_render && grunt gh-pages && git pull');
+            else
+                childProcess.execSync('cp -r heatmap_template/* logs && cd logs && mv gitignore .gitignore && npm install && grunt mustache_render && grunt gh-pages && git pull');
+        }
     }
 }
 
