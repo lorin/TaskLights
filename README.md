@@ -32,14 +32,15 @@ Simply having the light on is a strong and constant environmental cue that you h
   curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
   source ~/.profile
   nvm ls-remote
-  nvm install v0.12.0
-  nvm use 0.12.0
+  nvm install v6.9.4
+  nvm use 6.9.4
   node -v
   # See where installed
   which node
   ```
 
-  You may want to add `nvm use 0.12.0` add the end of your .bashrc/.profile
+  You may want to add `nvm use 6.9.4` add the end of your .bashrc/.profile or change (nvm alias)[https://github.com/creationix/nvm#listing-versions] to set 6.9.4 be your default version:
+    `nvm alias default 6.9.4`
 
 3. #### Change directory to src and do:
   ```npm install```
@@ -59,11 +60,12 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 1. #### Setting up environment
   * Seting up basic requirements:
-  Install Microsoft Visual Studio (community/express versions are enough)
+    * Install Microsoft Visual Studio (community/express versions are enough)
+    * Or use (this one-liner)[https://github.com/felixrieseberg/windows-build-tools] if you just want the build tools.
 
 2. #### Installing Node.js:
-  * For 64-bit Windows download and install: [Node.js 0.12.0 64-bit](https://nodejs.org/dist/v0.11.16/x64/node-v0.11.16-x64.msi)
-  * For 32-bit Windows download and install: [Node.js 0.12.0 32-bit](https://nodejs.org/dist/v0.12.0/node-v0.12.0-x86.msi)
+  * Download and install: [Node.js 6.9.4 64-bit](https://nodejs.org/dist/v6.9.4/node-v6.9.4-x64.msi)
+  * For 32-bit Windows see Node.js (website)[https://nodejs.org/en/download/]
 
   You may want to add `PATH/TO/NODE-NPM` to your environment path (if it was not added automatically).
 
