@@ -58,24 +58,25 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 ##Instructions for installing on Windows (tested on win 7, 10):
 
-1. #### Automaticlly install
-  Change directory to src and do
-  ```npm install --global --production windows-build-tools```
-
-2. ####If automaticlly install does not work, try manually install
-  * Setting up environment
-    * Seting up basic requirements:
-      * Install Microsoft Visual Studio (community/express versions are enough)
-      * Or use (this one-liner)[https://github.com/felixrieseberg/windows-build-tools] if you just want the build tools.
-
+1. #### Setting up environment
   * Installing Node.js:
     * Download and install: [Node.js 6.9.4 64-bit](https://nodejs.org/dist/v6.9.4/node-v6.9.4-x64.msi)
     * For 32-bit Windows see Node.js (website)[https://nodejs.org/en/download/]
 
-  You may want to add `PATH/TO/NODE-NPM` to your environment path (if it was not added automatically).
+2. #### Installing    
+  * Automaticlly install
+    Change directory to src and do
+    ```npm install --global --production windows-build-tools```
+  
+  * If automaticlly install does not work, try manually install
+    * Setting up basic requirements:
+      * Install Microsoft Visual Studio (community/express versions are enough)
+      * Or use (this one-liner)[https://github.com/felixrieseberg/windows-build-tools] if you just want the build tools.
+      
+      You may want to add `PATH/TO/NODE-NPM` to your environment path (if it was not added automatically).
 
-  * Change directory to src and do:
-  ```npm install```
+    * Change directory to src and do:
+      ```npm install```
 
 3. #### To get the web-server to work:
   * Change directory to `/src/controllers/web` and do
