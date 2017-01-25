@@ -58,34 +58,41 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 ##Instructions for installing on Windows (tested on win 7, 10):
 
-1. #### Setting up environment
-  * Seting up basic requirements:
-    * Install Microsoft Visual Studio (community/express versions are enough)
-    * Or use (this one-liner)[https://github.com/felixrieseberg/windows-build-tools] if you just want the build tools.
+1. #### Automaticlly install
+  Change directory to src and do
+  ```npm install --global --production windows-build-tools```
 
-2. #### Installing Node.js:
-  * Download and install: [Node.js 6.9.4 64-bit](https://nodejs.org/dist/v6.9.4/node-v6.9.4-x64.msi)
-  * For 32-bit Windows see Node.js (website)[https://nodejs.org/en/download/]
+2. ####If automaticlly install does not work, try manually install
+  * Setting up environment
+    * Seting up basic requirements:
+      * Install Microsoft Visual Studio (community/express versions are enough)
+      * Or use (this one-liner)[https://github.com/felixrieseberg/windows-build-tools] if you just want the build tools.
+
+  * Installing Node.js:
+    * Download and install: [Node.js 6.9.4 64-bit](https://nodejs.org/dist/v6.9.4/node-v6.9.4-x64.msi)
+    * For 32-bit Windows see Node.js (website)[https://nodejs.org/en/download/]
 
   You may want to add `PATH/TO/NODE-NPM` to your environment path (if it was not added automatically).
 
-3. #### Change directory to src and do:
+  * Change directory to src and do:
   ```npm install```
 
-4. #### To get the web-server to work:
-  Change directory to `/src/controllers/web` and do
+3. #### To get the web-server to work:
+  * Change directory to `/src/controllers/web` and do
   ```npm install```
-  and to start the local-server do the following and go to `http://localhost:5000/` in your browser:
-  ```node app.js```
+  * To start the local-server do the following:
+    * Change directory to `/src/controllers/web` and do
+    ```node app.js```
+    * Go to `http://localhost:5000/` in your browser:
 
-5. #### To track your focus: 
+4. #### To track your focus: 
    Create a git repository and update `src/settings.json` with your information.<br>
    Content of `settings.json` should look like:
    ```
    { 
-     	"remote": {{Remote url of the repository you just created}},
-     	"username": {{Your GitHub username}},
-     	"repo_name": {{Name of the repository you just created}} 
+     	"remote": "Remote url of the repository you just created",
+     	"username": "Your GitHub username",
+     	"repo_name": "Name of the repository you just created"
    }
    ```
    
