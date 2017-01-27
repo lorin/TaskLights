@@ -224,7 +224,7 @@ if( options.remote )
            });
 
         if( !fs.existsSync( gh_pages ) ){
-            var gruntLocalPath = path.join(__dirname,"/node_modules/grunt-cli/bin/grunt");
+            var gruntLocalPath = path.join(__dirname,"/node_modules/.bin/grunt");
             if(process.platform === 'win32')
                 childProcess.execSync(`copy /Y heatmap_template\* logs && cd logs && move /Y gitignore .gitignore && npm install && ${gruntLocalPath} mustache_render && ${gruntLocalPath} gh-pages && git pull`);
             else
