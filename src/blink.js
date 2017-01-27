@@ -224,10 +224,11 @@ if( options.remote )
            });
 
         if( !fs.existsSync( gh_pages ) ){
+            var gruntLocalPath = path.join(__dirname,"/node_modules/grunt-cli/bin/grunt");
             if(process.platform === 'win32')
-                childProcess.execSync('copy /Y heatmap_template\* logs && cd logs && move /Y gitignore .gitignore && npm install && grunt mustache_render && grunt gh-pages && git pull');
+                childProcess.execSync(`copy /Y heatmap_template\* logs && cd logs && move /Y gitignore .gitignore && npm install && ${gruntLocalPath} mustache_render && ${gruntLocalPath} gh-pages && git pull`);
             else
-                childProcess.execSync('cp -r heatmap_template/* logs && cd logs && mv gitignore .gitignore && npm install && grunt mustache_render && grunt gh-pages && git pull');
+                childProcess.execSync(`cp -r heatmap_template/* logs && cd logs && mv gitignore .gitignore && npm install && ${gruntLocalPath} mustache_render && ${gruntLocalPath} gh-pages && git pull`);
         }
     }
 }
