@@ -1,6 +1,0 @@
-node_modules/
-.grunt*
-Gruntfile.js
-heatmap.mustache
-www
-package.json
