@@ -9,7 +9,8 @@ var path = require('path');
 var lame = require('lame');
 var Speaker = require('speaker');
 var childProcess = require('child_process');
-//var destroy = require('destroy');
+var destroy = require('destroy');
+//var unpipe = require('unpipe');
 
 /**
  * onecolor usage example:
@@ -593,7 +594,8 @@ function pomodoroT(lightness) {
 function relax(sessionLength) { //??
 //console.log(process.uptime());
     
-    if(options.asmr){
+    
+    if (options.asmr){
       var sched1 = later.parse.recur().every(1).second();
       var play_audio;
       var audio = later.setInterval(function () {
@@ -602,22 +604,24 @@ function relax(sessionLength) { //??
           .on('format', function (format) {
             this.pipe(new Speaker(format));
           });
-          
-
-        
+      
       }, sched1);
     
       setTimeout(function(){
         audio.clear();
+        //play_audio.unpipe();
         destroy(play_audio);
       },sessionLength * 60000);
  
     }
-    
-    var sched2 = later.parse.recur().every(2).second();
- 
+    var lengthness;
+    var sched2 = later.parse.recur().every(10).second();
     var pulse = later.setInterval(function () {
-        Flashes(1, 700, palette.skyblue1, 0.3);
+        if (options.lightness){
+            Flashes(1, 5000, palette.skyblue1, lightness);
+        } else {
+            Flashes(1, 5000, palette.skyblue1, 1);
+        }
     }, sched2);
     
     setTimeout(function(){
