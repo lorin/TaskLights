@@ -9,8 +9,6 @@ var path = require('path');
 var lame = require('lame');
 var Speaker = require('speaker');
 var childProcess = require('child_process');
-var destroy = require('destroy');
-//var unpipe = require('unpipe');
 
 /**
  * onecolor usage example:
@@ -418,6 +416,7 @@ function linear(sessionLength, alarm, reminderInterval, lightness) {
         alarm.onInterval(start, sessionLength, lightness);
     }, sched);
 
+    
     schedule.scheduleJob(stop.toDate(), function () {
         pulse.clear();
         alarm.onEnd();
@@ -591,29 +590,35 @@ function pomodoroT(lightness) {
     }, sched);
 }
 
-function relax(sessionLength) { //??
-//console.log(process.uptime());
+/**
+ * Prints the man page to stdout
+ * @param {String} path of the audio
+ * @param {int} sessionLength in minutes
+ */
+var stream;
+function play_audio(sessionLength, songurl){ //??
+    setTimeout(function(){
+        stream.end();
+        process.exit();
+    },sessionLength * 60000); 
     
-    
+    stream = fs.createReadStream(songurl) 
+    .pipe(new lame.Decoder())
+    .on('format', function (format) {
+        this.pipe(new Speaker(format));
+    })
+    .on('finish', function() {      
+        play_audio(sessionLength, songurl);
+    });
+}
+
+function relax(sessionLength) { 
+    var songurl = "./assets/relax.mp3";
+    //console.log(moment());
     if (options.asmr){
-      var sched1 = later.parse.recur().every(1).second();
-      var play_audio;
-      var audio = later.setInterval(function () {
-          play_audio = fs.createReadStream("./assets/relax.mp3") //var play_audio = 
-          .pipe(new lame.Decoder())
-          .on('format', function (format) {
-            this.pipe(new Speaker(format));
-          });
-      
-      }, sched1);
-    
-      setTimeout(function(){
-        audio.clear();
-        //play_audio.unpipe();
-        destroy(play_audio);
-      },sessionLength * 60000);
- 
+        play_audio(sessionLength + 1/600, songurl); //close later than light
     }
+    
     var lengthness;
     var sched2 = later.parse.recur().every(10).second();
     var pulse = later.setInterval(function () {
