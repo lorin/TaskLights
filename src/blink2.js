@@ -604,19 +604,17 @@ function play_audio(sessionLength, songurl){ //??
     
     stream = fs.createReadStream(songurl) 
     .pipe(new lame.Decoder())
-    .on('format', function (format) {
-        this.pipe(new Speaker(format));
-    })
+    .pipe(new Speaker())
     .on('finish', function() {      
         play_audio(sessionLength, songurl);
     });
 }
 
 function relax(sessionLength) { 
-    var songurl = "./assets/relax.mp3";
-    //console.log(moment());
+    var songurl = "./assets/test4.mp3";
+    console.log(moment());
     if (options.asmr){
-        play_audio(sessionLength + 1/600, songurl); //close later than light
+        play_audio(sessionLength + 1/100, songurl); //close later than light
     }
     
     var lengthness;
@@ -631,6 +629,7 @@ function relax(sessionLength) {
     
     setTimeout(function(){
         pulse.clear();
+        console.log(moment());
     },sessionLength * 60000);
 
 }
