@@ -611,10 +611,10 @@ function play_audio(sessionLength, songurl){ //??
 }
 
 function relax(sessionLength) { 
-    var songurl = "./assets/test4.mp3";
+    var songurl = "./assets/relax.mp3";
     console.log(moment());
     if (options.asmr){
-        play_audio(sessionLength + 1/100, songurl); //close later than light
+        play_audio(sessionLength + 1/60, songurl); //close later than light
     }
     
     var lengthness;
