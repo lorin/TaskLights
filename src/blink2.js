@@ -160,12 +160,15 @@ const cli = commandLineArgs([{
     alias: 'r',
     type: String
 },{
-    name: 'relax', //??
+    name: 'relax',
     alias: 'x',
     type: Boolean
 },{
-    name: 'asmr', //??
+    name: 'asmr',
     alias: 'a',
+    type: Boolean
+},{
+    name: 'seasound', //??
     type: Boolean
 }]);
 const options = cli.parse();
@@ -554,8 +557,11 @@ function manPage() {
             name: 'message -m (optional)',
             description: 'The message that will be recorded for FocusDash (If set up in settings.json)'
         },{
-            name: 'ASMR -a (optional)', //??
+            name: 'ASMR -a (optional)',
             description: 'ASMR sound when having relax'
+        },{
+            name: 'seasound (optional)',
+            description: 'sea sound when having relax'
         },{
             name: 'relax -r', //??
             description: 'Relax mode'
@@ -610,26 +616,78 @@ function play_audio(sessionLength, songurl){ //??
     });
 }
 
+var pulse1;
+var pulse2;
+var sched1;
+var sched2;
 function relax(sessionLength) { 
-    var songurl = "./assets/relax.mp3";
+    
+    if (sessionLength < 2){
+        console.log("Please enter the length no less than 2 minutes");
+        process.exit();
+    }
+    var songurl = "./assets/asmr.mp3";
+    var songurl2 = "./assets/seasound.mp3";
+    
     console.log(moment());
+    console.log("begin");
     if (options.asmr){
         play_audio(sessionLength + 1/60, songurl); //close later than light
+    } else if (options.seasound){
+        play_audio(sessionLength + 1/60, songurl2);
     }
     
-    var lengthness;
-    var sched2 = later.parse.recur().every(10).second();
-    var pulse = later.setInterval(function () {
-        if (options.lightness){
-            Flashes(1, 5000, palette.skyblue1, lightness);
-        } else {
-            Flashes(1, 5000, palette.skyblue1, 1);
-        }
-    }, sched2);
+    var light_ness;
+    if (options.lightness){
+      light_ness = lightness;
+    } else {
+      light_ness = 1;
+    }
     
     setTimeout(function(){
-        pulse.clear();
+        clearInterval(pulse1);
+        clearTimeout(sched1);
+        clearInterval(pulse2);
+        clearTimeout(sched2);
         console.log(moment());
-    },sessionLength * 60000);
+        console.log("end");
+        //process.exit();
+    }, sessionLength * 60000);
 
+    interval(light_ness, sessionLength);
+}
+
+/**
+ * Pattern interval
+ * Step 1: 10seconds to inhale and 5 seconds to exhale
+ * 4 breath per minute
+ * Step 2: 1 second to inhale and 1 second to exhale
+ * 30 breath per minute
+ * @param {Number} percent reducing lightness of color to this percentage
+ * @param {int} sessionLength in minutes(useless right now)
+ */
+function interval(lightness, sessionLength){
+
+    Flashes(1, 5000, palette.skyblue1, lightness);
+    pulse1 = setInterval(function () {
+        Flashes(1, 5000, palette.skyblue1, lightness);
+    }, 15 * 1000);
+    
+    sched1 = setTimeout(function(){
+        clearInterval(pulse1);
+        console.log(moment());
+        console.log("1");
+
+        Flashes(1, 500, palette.skyblue1, lightness);
+        pulse2 = setInterval(function () {
+            Flashes(1, 500, palette.skyblue1, lightness);
+        }, 2 * 1000);
+        
+        sched2 = setTimeout(function(){
+            clearInterval(pulse2);
+            console.log(moment());
+            console.log("2");
+            interval(lightness, sessionLength);
+        }, 60000)
+    }, 60000);
 }
