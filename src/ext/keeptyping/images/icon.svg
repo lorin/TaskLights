@@ -1,0 +1,17 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <style type="text/css">.st0{fill:#414042;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#FFFFFF;stroke:#414042;stroke-width:3;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#ED1C24;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:#00A651;}</style>
+
+ <g>
+  <title>background</title>
+  <rect fill="#ffffff" id="canvas_background" height="122" width="122" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <circle id="svg_1" r="60" cy="60" cx="60" class="st0"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="29" id="svg_32" y="70.5" x="22" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="null" fill="#000000">TYPE</text>
+ </g>
+</svg>
