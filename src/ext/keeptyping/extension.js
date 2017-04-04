@@ -3,6 +3,12 @@
 var vscode = require('vscode');
 const editor = vscode.window.activeTextEditor;
 
+track = {
+    lastCodingTime: 0
+}
+
+
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
@@ -10,7 +16,10 @@ function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "keeptyping" is now active!');
-    
+    if (vscode.window.onDidChangeActiveTextEditor){
+            
+    }
+
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
@@ -18,8 +27,6 @@ function activate(context) {
         // The code you place here will be executed every time your command is executed
        //editor.onDidChangeActiveTextEditor(editOn);
         
-        const text = editor.document.getText();
-
     });
 
     context.subscriptions.push(disposable);

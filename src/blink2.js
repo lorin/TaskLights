@@ -619,10 +619,6 @@ function play_audio(sessionLength, songurl){
     });
 }
 
-var pulse1;
-var pulse2;
-var sched1;
-var sched2;
 function relax(sessionLength) { 
     
     if (sessionLength < 2){
@@ -654,7 +650,7 @@ function relax(sessionLength) {
             clearInterval(breath);
             console.log(moment());
             console.log("end");
-            process.exit(); //as long as await to schedule won't stop
+            process.exit(); //as long as await, schedule won't stop
         } , sessionLength * 60000);
 
     breathe();
