@@ -6,7 +6,7 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 ![demo](https://media.giphy.com/media/vQsEfQegkAl8s/giphy.gif)
 
-##Instructions for installing on Linux (tested on 14.04 LTS 64-bit):
+## Instructions for installing on Linux (tested on 14.04 LTS 64-bit):
 
 1. #### Setting up environment
   * Seting up basic requirements:
@@ -53,10 +53,7 @@ Simply having the light on is a strong and constant environmental cue that you h
   ```node app.js```
 
 
-
-
-
-##Instructions for installing on Windows (tested on win 7, 10):
+## Instructions for installing on Windows (tested on win 7, 10):
 
 1. #### Setting up environment
   * Installing Node.js:
