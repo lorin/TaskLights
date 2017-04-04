@@ -9,6 +9,9 @@ var path = require('path');
 var lame = require('lame');
 var Speaker = require('speaker');
 var childProcess = require('child_process');
+var async = require("async"); //need node v7.6.0
+var await = require('await'); //need node v7.6.0
+
 
 /**
  * onecolor usage example:
@@ -602,12 +605,12 @@ function pomodoroT(lightness) {
  * @param {int} sessionLength in minutes
  */
 var stream;
-function play_audio(sessionLength, songurl){ //??
+function play_audio(sessionLength, songurl){
     setTimeout(function(){
         stream.end();
         process.exit();
     },sessionLength * 60000); 
-    
+
     stream = fs.createReadStream(songurl) 
     .pipe(new lame.Decoder())
     .pipe(new Speaker())
@@ -626,15 +629,16 @@ function relax(sessionLength) {
         console.log("Please enter the length no less than 2 minutes");
         process.exit();
     }
-    var songurl = "./assets/asmr.mp3";
+    var songurl = "./assets/amsr.mp3";
     var songurl2 = "./assets/seasound.mp3";
     
     console.log(moment());
     console.log("begin");
+
     if (options.asmr){
-        play_audio(sessionLength + 1/60, songurl); //close later than light
+        play_audio(sessionLength, songurl); //close later than light??
     } else if (options.seasound){
-        play_audio(sessionLength + 1/60, songurl2);
+        play_audio(sessionLength, songurl2);
     }
     
     var light_ness;
@@ -643,51 +647,70 @@ function relax(sessionLength) {
     } else {
       light_ness = 1;
     }
-    
-    setTimeout(function(){
-        clearInterval(pulse1);
-        clearTimeout(sched1);
-        clearInterval(pulse2);
-        clearTimeout(sched2);
-        console.log(moment());
-        console.log("end");
-        //process.exit();
-    }, sessionLength * 60000);
 
-    interval(light_ness, sessionLength);
+    var breath;
+    setTimeout(
+        function(){
+            clearInterval(breath);
+            console.log(moment());
+            console.log("end");
+            process.exit(); //as long as await to schedule won't stop
+        } , sessionLength * 60000);
+
+    breathe();
+    breath = setInterval(function () {
+        breathe();
+    }, 2 * 60000);
+    
+    //repeatFlash(breathe(), sessionLength * 60000, sessionLength/2);
+
 }
 
+//*************repeat model**********/
+
 /**
- * Pattern interval
- * Step 1: 10seconds to inhale and 5 seconds to exhale
+ * delay
+ * @param {int} amount of delay
+ */
+function delay(amount){
+    return new Promise(resolve => setTimeout(resolve, amount));
+}
+
+/** 
+ * repeat a model of flash
+ * @param {function} the model to be repeated
+ * @param {int} sessionLength in milliseconds(useless right now)
+ * @param {int} times to repeat
+ */
+async function repeatFlash(type, sessionLength, times){
+    for (var i = 0; i < times; i++){
+        type();
+        await delay(sessionLength);
+    }    
+
+}
+/*************repeat model**********/
+
+/**
+ * Pattern breathe
+ * Step 1: 10 seconds to inhale and 5 seconds to exhale
  * 4 breath per minute
  * Step 2: 1 second to inhale and 1 second to exhale
  * 30 breath per minute
- * @param {Number} percent reducing lightness of color to this percentage
- * @param {int} sessionLength in minutes(useless right now)
  */
-function interval(lightness, sessionLength){
-
-    Flashes(1, 5000, palette.skyblue1, lightness);
-    pulse1 = setInterval(function () {
+async function breathe(){
+    console.log("breathe type 1");
+    repeatFlash(function() {
         Flashes(1, 5000, palette.skyblue1, lightness);
-    }, 15 * 1000);
-    
-    sched1 = setTimeout(function(){
-        clearInterval(pulse1);
-        console.log(moment());
-        console.log("1");
+    }, 15 * 1000, 4);
 
+    await delay(60 * 1000);
+
+    console.log("breathe type 2");
+    repeatFlash(function() {
         Flashes(1, 500, palette.skyblue1, lightness);
-        pulse2 = setInterval(function () {
-            Flashes(1, 500, palette.skyblue1, lightness);
-        }, 2 * 1000);
-        
-        sched2 = setTimeout(function(){
-            clearInterval(pulse2);
-            console.log(moment());
-            console.log("2");
-            interval(lightness, sessionLength);
-        }, 60000)
-    }, 60000);
+    }, 2 * 1000, 30);
+
 }
+
+
