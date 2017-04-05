@@ -13,13 +13,12 @@
     ],
     "activationEvents": [
         "*"
-        //"onCommand:extension.sayHello"
     ],
     "main": "./extension",
     "contributes": {
         "commands": [{
             "command": "extension.sayHello",
-            "title": "Keep Typing"
+            "title": "Hello World"
         }]
     },
     "scripts": {
