@@ -12,6 +12,7 @@ var childProcess = require('child_process');
 var async = require("async"); //need node v7.6.0
 var await = require('await'); //need node v7.6.0
 
+let assets = path.resolve(__dirname,'assets');
 
 /**
  * onecolor usage example:
@@ -625,8 +626,8 @@ function relax(sessionLength) {
         console.log("Please enter the length no less than 2 minutes");
         process.exit();
     }
-    var songurl = "./assets/amsr.mp3";
-    var songurl2 = "./assets/seasound.mp3";
+    var songurl = `${assets}/asmr.mp3`;
+    var songurl2 = `${assets}/seasound.mp3`;
     
     console.log(moment());
     console.log("begin");
