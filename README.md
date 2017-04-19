@@ -65,6 +65,8 @@ Simply having the light on is a strong and constant environmental cue that you h
     * Run the shell as administer
     * Change directory to src and do:
       ```npm install --global --production windows-build-tools```
+    * do: 
+      ```npm install```
     
   
   * If automaticlly install does not work, try manually install
@@ -76,12 +78,14 @@ Simply having the light on is a strong and constant environmental cue that you h
 
     * Change directory to src and do:
       ```npm install --global --production windows-build-tools```
-      
+    * do: 
+      ```npm install```  
 
 3. #### To get the web-server to work:
   * Change directory to `/src/controllers/web` and do
-  ```npm install --global --production windows-build-tools```
-  
+    ```npm install --global --production windows-build-tools```
+  * do: 
+    ```npm install```
   
   * To start the local-server do the following:
     * Change directory to `/src/controllers/web` and do:
