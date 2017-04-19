@@ -40,13 +40,13 @@ function activate(context) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     /*
-    var disposable = vscode.commands.registerCommand('extension.sayHello', function () {
+    var disposable = vscode.commands.registerCommand('extension.sayHello', function (sessionLength) {
         // The code you place here will be executed every time your command is executed
        //editor.onDidChangeActiveTextEditor(editOn);
        setTimeout(
         function(){
             clearInterval(check);
-        } , 1 * 1000);
+        } , sessionLength * 60 * 1000);
  
     });
     
@@ -69,8 +69,6 @@ function deactivate() {
 exports.deactivate = deactivate;
 
 function editOn() {
-    //blink1.fadeToRGB(1000, 0, 255, 0);
-    //vscode.window.showInformationMessage('Keep typing!');
     request.post('http://localhost:5000/Blink/editOn', function(err,res,body){
         // callback
         console.log("Keep typing! ");
@@ -79,8 +77,6 @@ function editOn() {
 }
 
 function editOff() {
-    //blink1.fadeToRGB(1000, 255, 0, 0);
-    //vscode.window.showInformationMessage('Don\'t stop typing!');
     request.post('http://localhost:5000/Blink/editOff', function(err,res,body){
         // callback
         console.log("Don't stop typing! ");
