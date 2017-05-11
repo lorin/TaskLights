@@ -12,14 +12,19 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onCommand:extension.start",
+    "onCommand:extension.close"
   ],
   "main": "./extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.sayHello",
-        "title": "Hello World"
+        "command": "extension.start",
+        "title": "start"
+      },
+      {
+        "command": "extension.close",
+        "title": "close"
       }
     ]
   },
