@@ -1,9 +1,15 @@
 # keeptyping README
 
-This is the README for your extension "keeptyping". After writing up a brief description, we recommend including the following sections.
+## Introduction
+The extension works for any kinds of file.
+
+run app.js
+
+After opening a file in the vscode, ctrl+shift+p to open command palette, enter "start" to start the extension, and then enter "close" to close the extension.
+
+When the extension is working, if have not typed anything for a certain time, red light is on, and if have typed something in the time period, green light is on.
 
 ## Features
-
 Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
 For example if there is an image subfolder under your extension project workspace:
