@@ -6,6 +6,10 @@ Simply having the light on is a strong and constant environmental cue that you h
 
 ![demo](https://media.giphy.com/media/vQsEfQegkAl8s/giphy.gif)
 
+## Hardware
+
+The LED light is a [blink(1)](https://blink1.thingm.com/).
+
 ## Instructions for installing on Linux (tested on 14.04 LTS 64-bit):
 
 1. #### Setting up environment
