@@ -163,4 +163,4 @@ The LED light is a [blink(1)](https://blink1.thingm.com/).
 
 <br/>
 <br/>
-see: [Summary of tasks](https://github.com/alt-code/TaskLights/blob/master/Summary.md)
+[Summary of tasks](https://github.com/alt-code/TaskLights/blob/master/Summary.md)
